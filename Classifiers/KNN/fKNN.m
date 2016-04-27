@@ -2,7 +2,7 @@ function [ resultados ] = fKNN(treino, teste, k)
 %KNN [ resultados ] = KNN(treino, teste, k)
 %   Essa funcao recebe uma base de treino, uma base de teste e um valor k,
 %   inteiro. Ela retorna um vetor, com a quantidade de linhas do vetor de
-%   teste, que contem as classes atribu?das atraves da distancia
+%   teste, que contem as classes atribuidas atraves da distancia
 %   euclidiana.
     
     qt = size(teste.x,1); %Quantidade de elementos para teste.
@@ -22,6 +22,7 @@ function [ resultados ] = fKNN(treino, teste, k)
     resultados.classe = r;
     
     %Calcular acuracia.
-    resultados.acuracia = acuraciaKNN(teste.y, resultados.classe);
+    s = sum(teste.y == resultados.classe);
+    resultados.acuracia = s/size(resultados.classe,1);
 end
 
