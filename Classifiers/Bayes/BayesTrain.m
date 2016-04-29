@@ -24,7 +24,7 @@ function output = BayesTrain( treino )
     output.media = media;
     output.apriori = prioriClasse;
     output.matCov = matCov;
-    output.meanCovBtClass = mean(matCov, size(matCov, 3));
+    output.meanCovBtClass = mean(matCov, 3);
     output.matCovAll = covAll;
 
 end
