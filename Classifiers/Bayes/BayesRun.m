@@ -7,13 +7,18 @@ addpath('../Utils/');
 %  filename = 'column_2C.txt';
   filename = 'column_3C.txt';
 
-data = load(filename);
+base = loadDataset(filename);
 
-base.x = data(:, 1:end-1); %Caracteristicas%
-base.x = normalizar(base.x,1);
+%% Executando classificador Bayesiano com Rejeicao %%
+% Atribuindo os custos para que o classificador calcule o limiar de
+% rejeicao. Os valores dos custos
+custos.acertar = 0; %Wc%
+custos.errar = 1; %We%
+custos.rejeitar = 0.5; %Wr = [0; 0.5]%
 
-base.y = data(:, end); %Classe%
+result = bayesReject(base, 20, 0.8, custos);
 
+<<<<<<< HEAD
 % result = bayes(base, 20, 0.8, 'mvnpdf');
  resultQ = bayes(base, 20, 0.8, 'quadratica');
 % result = bayes(base, 20, 0.8, 'matCovIgual');
@@ -32,3 +37,25 @@ base.y = data(:, end); %Classe%
  title('Boxplot da Acuracia para a base da Coluna com duas classes');
  ylabel('Acuracia');
  xlabel('Calculo de g(x)');   
+
+%% Executando classificador Bayesiano com Risco %%
+% riskMatrix = 1 - eye(length(unique(base.y)));
+% result = bayesRisk(base, 20, 0.8, riskMatrix);
+
+%% Executando classificador Bayesiano com fun??es discriminantes %%
+% % result  = bayes(base, 20, 0.8, 'mvnpdf');
+% resultQ   = bayes(base, 20, 0.8, 'quadratica');
+% % result  = bayes(base, 20, 0.8, 'matCovIgual');
+% resultCI  = bayes(base, 20, 0.8, 'matCovMean');
+% % result  = bayes(base, 20, 0.8, 'matCovAll');
+% resultCDI = bayes(base, 20, 0.8, 'matCovDiagIgual');
+% resultECD = bayes(base, 20, 0.8, 'equiprovavelCovDif');
+% resultECI = bayes(base, 20, 0.8, 'equiprovavelCovIgual');
+% resultED  = bayes(base, 20, 0.8, 'eclidianDistance');
+% resultMD  = bayes(base, 20, 0.8, 'mahalanobisDistance');
+%Gerando Boxplots%
+%  bp = [resultQ.acc; resultCI.acc; resultCDI.acc; resultECD.acc; resultECI.acc; resultED.acc; resultMD.acc];
+%  bpt = bp';
+%  figure, boxplot(bpt);
+%  %title('Boxplot da Acur?cia para a base da Coluna com tr?s classes');
+%  ylabel('Acur?cia');

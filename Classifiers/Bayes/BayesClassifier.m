@@ -1,4 +1,4 @@
-function output = BayesTest( teste, modelo, tipo )
+function output = BayesClassifier( teste, modelo, tipo )
     if strcmp(tipo, '')
         tipo = 'mvnpdf';
     end

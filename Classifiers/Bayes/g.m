@@ -16,8 +16,10 @@ function output = g(x, modelo, tipo)
     if strcmp(tipo, 'mvnpdf')
         % Calculo sobre a equacao de Bayes direto. A unica modificacao esta
         % na ausencia da evidencia.
+        evdc = evidencia(x, modelo);
         for i = 1:length(modelo.apriori)
-            gOut(i, :) = modelo.apriori(i) * mvnpdf(x, modelo.media(:, :, i), modelo.matCov(:, :, i))';
+            %gOut(i, :) = (modelo.apriori(i) * mvnpdf(x, modelo.media(:, :, i), modelo.matCov(:, :, i))');
+            gOut(i, :) = evdc.nPosteriori(i,:)./evdc.evidencia ;
         end
     elseif strcmp(tipo,'quadratica')
         % Leva em consideracao que as matrizes de covariancia sao

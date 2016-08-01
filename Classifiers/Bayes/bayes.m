@@ -35,9 +35,11 @@ function output = bayes( base, epocas, pctgTreino, tipo )
         
         [treino, teste] = dividirBase(baseEmbaralhada, pctgTreino);
 
+        % Treino %
         modelo = BayesTrain( treino );
 
-        resultadoTeste = BayesTest(teste, modelo, tipo);
+        % Teste %
+        resultadoTeste = BayesClassifier(teste, modelo, tipo);
 
         s = sum(resultadoTeste.classes == teste.y');
         acc(i) = s/size(resultadoTeste.classes,2);

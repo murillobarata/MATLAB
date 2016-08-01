@@ -16,6 +16,17 @@ if (opcao == 1)
 elseif (opcao == 2)
     dataset = dados - min(dados(:));
     dataset = dataset ./ max(dados(:));
+elseif (opcao == 3)
+    range = [0 1];
+    maximos = max(dados);
+    minimos = min(dados);
+    T = dados - repmat( minimos,[size(dados,1) 1]);
+    T = T ./ repmat( maximos - minimos,[size(dados,1) 1]);
+
+    T = T * (range(2) - range(1)) ;
+    T = T + range(1);
+
+    dataset = T;
 end
 
     output = dataset;
