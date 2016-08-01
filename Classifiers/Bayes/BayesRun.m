@@ -5,7 +5,7 @@ addpath('../Utils/');
 %  filename = 'iris-dataset.txt';
 %  filename = 'dermatologia.txt'; 
 %  filename = 'column_2C.txt';
-%  filename = 'column_3C.txt';
+  filename = 'column_3C.txt';
 
 data = load(filename);
 
@@ -29,7 +29,6 @@ base.y = data(:, end); %Classe%
  bp = [resultQ.acc; resultCI.acc; resultCDI.acc; resultECD.acc; resultECI.acc; resultED.acc; resultMD.acc];
  bpt = bp';
  figure, boxplot(bpt);
- %title('Boxplot da Acurácia para a base da Coluna com três classes');
- ylabel('Acurácia');
- xlabel('Forma de calcular g(x)');
- 
+ title('Boxplot da Acuracia para a base da Coluna com duas classes');
+ ylabel('Acuracia');
+ xlabel('Calculo de g(x)');   
