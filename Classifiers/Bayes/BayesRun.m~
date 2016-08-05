@@ -12,11 +12,11 @@ base = loadDataset(filename);
 %% Executando classificador Bayesiano com Rejeicao %%
 % Atribuindo os custos para que o classificador calcule o limiar de
 % rejeicao. Os valores dos custos
-% custos.acertar = 0; %Wc%
-% custos.errar = 1; %We%
-% custos.rejeitar = 0.2; %Wr = [0; 0.5]%
-% 
-% result = bayesReject(base, 20, 0.8, custos);
+custos.acertar = 0; %Wc%
+custos.errar = 1; %We%
+custos.rejeitar = 0.85; %Wr = [0; 0.5]%
+
+result = bayesReject(base, 20, 0.8, custos);
 
 % % result = bayes(base, 20, 0.8, 'mvnpdf');
 %  resultQ = bayes(base, 20, 0.8, 'quadratica');
@@ -38,8 +38,8 @@ base = loadDataset(filename);
 %  xlabel('Calculo de g(x)');   
 
 %% Executando classificador Bayesiano com Risco %%
-riskMatrix = 1 - eye(length(unique(base.y)));
-result = bayesRisk(base, 20, 0.8, riskMatrix);
+% riskMatrix = 1 - eye(length(unique(base.y)));
+% result = bayesRisk(base, 20, 0.8, riskMatrix);
 
 %% Executando classificador Bayesiano com fun??es discriminantes %%
 % % result  = bayes(base, 20, 0.8, 'mvnpdf');
