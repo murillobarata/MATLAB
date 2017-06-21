@@ -13,7 +13,7 @@ function resultado = RejectBayesClassifier(  x, modelo, custos )
     
     [resultado.valores, resultado.classes] = max(out);
     
-    if ( indiceRejeicao <= 0.5 )
+%     if ( indiceRejeicao <= 0.5 )
         classificadosMatriz = (resultado.valores >= indiceRejeicao);
         
         resultado.qntdClassificados = sum(classificadosMatriz);
@@ -21,8 +21,8 @@ function resultado = RejectBayesClassifier(  x, modelo, custos )
         
         resultado.valores = resultado.valores .* classificadosMatriz;
         resultado.classes = resultado.classes .* classificadosMatriz; 
-    else
-        resultado = [];
-    end
+%     else
+%         resultado = [];
+%     end
 end
 
