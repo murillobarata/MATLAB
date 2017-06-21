@@ -3,15 +3,15 @@ close all; clear; clc;
 addpath('../Utils/');
 addpath('../Datasets/');
 
-filename = 'iris-dataset.txt';
+filename = 'DB_AHTD_LUNG.txt';
 data = load(filename);
 
-pctgTreino = 0.8;
+% pctgTreino = 0.8;
 
 base.x = data(:, 1:end-1); %Caracteristicas%
-base.x = normalizar(base.x, 1);
+% base.x = normalizar(base.x, 1);
 base.y = data(:, end); %Classe%
 
-qntdEpocas = 50;
+% qntdEpocas = 50;
 
-resultado = DMC(base, qntdEpocas, pctgTreino);
+% resultado = DMC(base, qntdEpocas, pctgTreino);

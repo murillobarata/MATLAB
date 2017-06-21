@@ -3,9 +3,9 @@ addpath('../Datasets/');
 addpath('../Utils/');
 
 %  filename = 'iris-dataset.txt';
-%  filename = 'dermatologia.txt'; 
+ filename = 'dermatologia.txt'; 
 %  filename = 'column_2C.txt';
- filename = 'column_3C.txt';
+%  filename = 'column_3C.txt';
 
 base = loadDataset(filename);
 
@@ -16,7 +16,7 @@ custos.acertar = 0; %Wc%
 custos.errar = 1; %We%
 custos.rejeitar = 0.5; %Wr = [0; 0.5]%
 
-result = bayesReject(base, 20, 0.8, custos);
+% result = bayesReject(base, 20, 0.8, custos);
 
 %% Executando classificador Bayesiano com Risco %%
 % riskMatrix = 1 - eye(length(unique(base.y)));
@@ -24,7 +24,7 @@ result = bayesReject(base, 20, 0.8, custos);
 
 %% Executando classificador Bayesiano com funções discriminantes %%
 % % result  = bayes(base, 20, 0.8, 'mvnpdf');
-% resultQ   = bayes(base, 20, 0.8, 'quadratica');
+resultQ   = bayes(base, 20, 0.8, 'quadratica');
 % % result  = bayes(base, 20, 0.8, 'matCovIgual');
 % resultCI  = bayes(base, 20, 0.8, 'matCovMean');
 % % result  = bayes(base, 20, 0.8, 'matCovAll');
